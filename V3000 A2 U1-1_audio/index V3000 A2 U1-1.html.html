@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EnglishPod 每日單字練習</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f5f6fa;color:#1a1a2e;min-height:100vh}
+header{background:#1f4e79;color:#fff;padding:16px 20px;text-align:center}
+header h1{font-size:20px;font-weight:600;margin-bottom:2px}
+header p{font-size:12px;opacity:.75}
+.container{max-width:720px;margin:0 auto;padding:16px}
+
+/* TABS */
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tab{padding:7px 18px;border-radius:20px;border:1px solid #c5d3e0;background:#fff;cursor:pointer;font-size:13px;color:#555;transition:all .2s}
+.tab.active{background:#1f4e79;color:#fff;border-color:#1f4e79;font-weight:500}
+
+.section{display:none}.section.active{display:block}
+
+/* LOADING / ERROR */
+.status{text-align:center;padding:40px 20px;color:#888;font-size:14px}
+.status .spin{display:inline-block;width:28px;height:28px;border:3px solid #ddd;border-top-color:#1f4e79;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-box{background:#fff0f0;border:1px solid #f5c6c6;border-radius:10px;padding:16px;color:#c0392b;font-size:13px;margin:12px 0}
+
+/* VOCAB CARDS */
+.vcard{background:#fff;border:1px solid #e0e8f0;border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.vcard-head{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none}
+.vcard-head:hover{background:#f8fafc}
+.vnum{font-size:11px;color:#aaa;min-width:18px;font-weight:600}
+.vword{font-size:18px;font-weight:600;color:#1f4e79}
+.vpron{font-size:12px;color:#888;margin-left:2px}
+.vtype{font-size:11px;color:#aaa;background:#f0f4f8;padding:1px 6px;border-radius:8px}
+.vzh{font-size:13px;color:#555;margin-left:auto;text-align:right;flex-shrink:0}
+.vchev{font-size:18px;color:#bbb;margin-left:8px;transition:transform .2s;flex-shrink:0}
+.vcard.open .vchev{transform:rotate(180deg)}
+
+.vbody{display:none;padding:0 16px 14px;border-top:1px solid #f0f4f8}
+.vcard.open .vbody{display:block}
+
+.play-row{display:flex;gap:8px;flex-wrap:wrap;padding:10px 0 8px}
+.pbtn{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:16px;border:1px solid #c5d3e0;background:#fff;cursor:pointer;font-size:12px;color:#555;transition:all .15s}
+.pbtn:hover{background:#eef4fb;border-color:#1f4e79;color:#1f4e79}
+.pbtn.playing{background:#1f4e79;color:#fff;border-color:#1f4e79}
+.pbtn svg{width:13px;height:13px;flex-shrink:0;fill:currentColor}
+
+.ex-list{border-top:1px solid #f0f4f8;padding-top:4px}
+.ex-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f7f9fc}
+.ex-item:last-child{border-bottom:none}
+.ex-text{flex:1}
+.ex-num{font-size:11px;color:#aaa;font-weight:600;min-width:16px;padding-top:2px}
+.ex-en{font-size:13px;color:#1a1a2e;line-height:1.55}
+.ex-zh{font-size:12px;color:#888;margin-top:2px}
+
+/* STORY */
+.card{background:#fff;border:1px solid #e0e8f0;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card-label{font-size:11px;font-weight:600;color:#1f4e79;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.story-en{font-size:14px;line-height:1.9;color:#1a1a2e}
+.story-zh{font-size:13px;line-height:1.9;color:#666}
+.hl{background:#dceeff;color:#1f4e79;border-radius:3px;padding:0 3px;font-weight:600}
+
+/* DIALOGUE */
+.dlg-pair{margin-bottom:14px}
+.dlg-speaker{font-size:11px;color:#888;font-weight:600;margin-bottom:5px;padding-left:2px}
+.dlg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:500px){.dlg-grid{grid-template-columns:1fr}}
+.dlg-en{background:#dceeff;color:#1a3a5c;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.7}
+.dlg-zh{background:#f5f6fa;color:#666;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.7;border:1px solid #e8edf2}
+.hl-w{font-weight:600;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}
+
+/* QUIZ */
+.q-meta{font-size:12px;color:#aaa;margin-bottom:10px}
+.q-text{font-size:15px;font-weight:600;color:#1a1a2e;margin-bottom:14px;line-height:1.5}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+@media(max-width:400px){.q-opts{grid-template-columns:1fr}}
+.qopt{padding:10px 14px;border-radius:10px;border:1px solid #c5d3e0;background:#fff;cursor:pointer;font-size:13px;color:#1a1a2e;text-align:left;transition:all .15s}
+.qopt:hover{border-color:#1f4e79;background:#eef4fb}
+.qopt.correct{background:#d4edda;color:#155724;border-color:#c3e6cb}
+.qopt.wrong{background:#f8d7da;color:#721c24;border-color:#f5c6c6}
+.q-fb{font-size:13px;color:#555;min-height:22px;margin-bottom:8px}
+.nbtn{padding:7px 20px;border-radius:20px;border:1px solid #c5d3e0;background:#fff;cursor:pointer;font-size:13px;color:#1a1a2e}
+.nbtn:hover{background:#eef4fb;border-color:#1f4e79}
+.result-box{text-align:center;padding:24px;background:#fff;border-radius:12px;border:1px solid #e0e8f0}
+.result-score{font-size:36px;font-weight:700;color:#1f4e79;margin-bottom:8px}
+.result-msg{font-size:14px;color:#666;margin-bottom:16px}
+
+/* SHEET INFO */
+.sheet-info{font-size:11px;color:#aaa;text-align:center;padding:8px;margin-top:8px}
+
+/* TTS STATUS BAR */
+.tts-bar{display:flex;align-items:center;gap:8px;font-size:12px;padding:7px 12px;border-radius:8px;margin-bottom:12px}
+.tts-bar.google{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.tts-bar.browser{background:#fff8e1;color:#f57f17;border:1px solid #ffe082}
+.tts-bar.error{background:#fce4ec;color:#c62828;border:1px solid #f8bbd0}
+.tts-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📚 EnglishPod 每日單字練習</h1>
+  <p id="sheet-date">載入中…</p>
+</header>
+
+<div class="container">
+  <div id="tts-bar" class="tts-bar" style="display:none"></div>
+  <div class="tabs">
+    <button class="tab active" onclick="sw('vocab')">📇 單字卡</button>
+    <button class="tab" onclick="sw('story')">📖 情境短文</button>
+    <button class="tab" onclick="sw('dlg')">💬 情境對話</button>
+    <button class="tab" onclick="sw('quiz')">🏆 小測驗</button>
+  </div>
+
+  <div id="sec-vocab" class="section active">
+    <div class="status" id="vocab-loading">
+      <div class="spin"></div><br>從 Google Sheet 載入單字中…
+    </div>
+  </div>
+
+  <div id="sec-story" class="section">
+    <div class="status">請先到「單字卡」頁讓資料載入完成。</div>
+  </div>
+
+  <div id="sec-dlg" class="section">
+    <div class="status">請先到「單字卡」頁讓資料載入完成。</div>
+  </div>
+
+  <div id="sec-quiz" class="section">
+    <div class="status">請先到「單字卡」頁讓資料載入完成。</div>
+  </div>
+
+  <div class="sheet-info" id="sheet-info"></div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════
+//  ★ 設定區：請修改這兩個值
+// ════════════════════════════════════════════════
+const SHEET_ID   = '16a8Cyos9SXG6kl9CZO-CCkaayG2hMhDI';  // 你的 Google Sheet ID
+const SHEET_NAME = 'Daily';                                  // 工作表名稱（分頁標籤名）
+// ════════════════════════════════════════════════
+
+// Google Sheet 必須「發布到網路」→ 取得 CSV 連結
+// 格式：序號 | 單字 | 音標 | 詞性 | 中文 | 例句1EN | 例句1ZH | 例句2EN | 例句2ZH | 例句3EN | 例句3ZH | 情境短文EN | 情境短文ZH | 對話資料(JSON)
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+let WORDS = [];
+let currentAudio = null;
+let currentBtn   = null;
+let qi = 0, qs = 0;
+let dataLoaded = false;
+let ttsMode = 'unknown';
+
+// ── TTS 狀態列 ──
+function showTTSBar(mode, msg){
+  const bar = document.getElementById('tts-bar');
+  bar.className = 'tts-bar ' + mode;
+  bar.style.display = 'flex';
+  bar.innerHTML = `<span class="tts-dot"></span> ${msg}`;
+  ttsMode = mode;
+}
+
+// ── 載入資料 ──
+async function loadData(){
+  try{
+    const res = await fetch(CSV_URL);
+    if(!res.ok) throw new Error('無法讀取 Google Sheet，狀態碼：'+res.status);
+    const text = await res.text();
+    parseCSV(text);
+    dataLoaded = true;
+    buildAll();
+  }catch(e){
+    document.getElementById('vocab-loading').innerHTML =
+      `<div class="error-box">
+        ⚠️ 無法載入 Google Sheet 資料<br><br>
+        <strong>可能原因：</strong><br>
+        1. Google Sheet 尚未「發布到網路」<br>
+        2. Sheet ID 或工作表名稱設定錯誤<br>
+        3. 網路問題<br><br>
+        <strong>錯誤訊息：</strong>${e.message}
+      </div>
+      <div style="font-size:13px;color:#555;line-height:1.8;margin-top:12px">
+        📋 <strong>設定步驟：</strong><br>
+        1. 開啟你的 Google Sheet<br>
+        2. 上方選單→「檔案」→「共用」→「發布到網路」<br>
+        3. 選擇工作表名稱，格式選 CSV，按「發布」<br>
+        4. 回到這個 index.html，確認 SHEET_NAME 與你的工作表名稱一致
+      </div>`;
+  }
+}
+
+// ── CSV 解析 ──
+function parseCSV(text){
+  const lines = text.trim().split('\n');
+  // 跳過第一行（標題列）
+  for(let i=1;i<lines.length;i++){
+    const cols = parseCSVLine(lines[i]);
+    if(!cols[1]) continue; // 單字欄位空白就跳過
+    WORDS.push({
+      n:    i,
+      word: clean(cols[1]),
+      pron: clean(cols[2]),
+      type: clean(cols[3]),
+      zh:   clean(cols[4]),
+      ex:[
+        {en:clean(cols[5]),  zh:clean(cols[6])},
+        {en:clean(cols[7]),  zh:clean(cols[8])},
+        {en:clean(cols[9]),  zh:clean(cols[10])}
+      ].filter(e=>e.en),
+      storyEN: clean(cols[11]),
+      storyZH: clean(cols[12]),
+      dlgJSON: clean(cols[13])
+    });
+  }
+  if(WORDS.length>0){
+    document.getElementById('sheet-date').textContent =
+      '今日共 '+WORDS.length+' 個單字・資料來源：Google Sheet';
+    document.getElementById('sheet-info').textContent =
+      'Sheet ID: '+SHEET_ID+' ／ 工作表：'+SHEET_NAME;
+  }
+}
+
+function parseCSVLine(line){
+  const result=[];
+  let cur='', inQ=false;
+  for(let i=0;i<line.length;i++){
+    const c=line[i];
+    if(c==='"'){
+      if(inQ && line[i+1]==='"'){cur+='"';i++;}
+      else inQ=!inQ;
+    }else if(c===','&&!inQ){result.push(cur);cur='';}
+    else cur+=c;
+  }
+  result.push(cur);
+  return result;
+}
+
+function clean(s){ return s ? s.replace(/^"|"$/g,'').trim() : ''; }
+
+// ── Google TTS（失敗自動切換瀏覽器語音）──
+function googleTTS(text, btnEl){
+  // 暫停目前播放中的音訊
+  if(currentAudio){
+    currentAudio.pause();
+    currentAudio=null;
+    if(currentBtn) resetBtn(currentBtn);
+    if(currentBtn===btnEl){currentBtn=null;return;}
+  }
+
+  if(btnEl){btnEl.classList.add('playing');btnEl.innerHTML=pauseIcon()+' 播放中';}
+  currentBtn=btnEl;
+
+  // 如果上次已確認 Google TTS 被擋，直接用備援
+  if(ttsMode==='browser'){
+    fallbackTTS(text,btnEl);
+    return;
+  }
+
+  const url='https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q='+encodeURIComponent(text);
+  const audio=new Audio();
+  audio.crossOrigin='anonymous';
+
+  let settled=false;
+  const timer=setTimeout(()=>{
+    if(!settled){ settled=true; fallbackTTS(text,btnEl); }
+  },3500);
+
+  audio.oncanplaythrough=()=>{
+    if(settled)return;
+    settled=true;
+    clearTimeout(timer);
+    showTTSBar('google','🎵 Google TTS 語音正常 ✓');
+    currentAudio=audio;
+    audio.play().catch(()=>{resetBtn(btnEl);currentAudio=null;currentBtn=null;});
+  };
+
+  audio.onended=()=>{
+    if(btnEl)resetBtn(btnEl);
+    currentAudio=null;currentBtn=null;
+  };
+
+  audio.onerror=()=>{
+    if(settled)return;
+    settled=true;
+    clearTimeout(timer);
+    showTTSBar('browser','⚠️ Google TTS 被擋，已切換瀏覽器語音');
+    fallbackTTS(text,btnEl);
+  };
+
+  audio.src=url;
+  audio.load();
+}
+
+// ── 備援：瀏覽器內建語音 ──
+function fallbackTTS(text, btnEl){
+  if(!window.speechSynthesis){
+    showTTSBar('error','❌ 瀏覽器不支援語音功能');
+    if(btnEl)resetBtn(btnEl);
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.85;
+  // 選較自然的英文語音
+  const voices=window.speechSynthesis.getVoices();
+  const pick=voices.find(v=>(v.name.includes('Google US')||v.name.includes('Samantha')||v.name.includes('Karen'))&&v.lang.startsWith('en'))
+             ||voices.find(v=>v.lang.startsWith('en-US'));
+  if(pick) u.voice=pick;
+  u.onend=()=>{if(btnEl)resetBtn(btnEl);currentBtn=null;};
+  window.speechSynthesis.speak(u);
+  currentAudio={pause:()=>window.speechSynthesis.cancel()};
+}
+
+function resetBtn(btn){btn.classList.remove('playing');btn.innerHTML=playIcon()+' 播放';}
+
+function playIcon(){return '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';}
+function pauseIcon(){return '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';}
+
+function mkBtn(text, label, id){
+  return `<button class="pbtn" id="${id}" onclick="googleTTS(decodeURIComponent('${encodeURIComponent(text)}'),this)">${playIcon()} ${label}</button>`;
+}
+
+// ── TABS ──
+function sw(t){
+  ['vocab','story','dlg','quiz'].forEach((id,i)=>{
+    document.getElementById('sec-'+id).classList.toggle('active',id===t);
+    document.querySelectorAll('.tab')[i].classList.toggle('active',id===t);
+  });
+}
+
+// ── BUILD ALL ──
+function buildAll(){
+  buildVocab();
+  buildStory();
+  buildDlg();
+  buildQuiz();
+}
+
+// ── VOCAB ──
+function buildVocab(){
+  const sec=document.getElementById('sec-vocab');
+  sec.innerHTML='';
+  if(!WORDS.length){
+    sec.innerHTML='<div class="error-box">Google Sheet 沒有讀取到資料，請確認格式是否正確。</div>';
+    return;
+  }
+  WORDS.forEach(w=>{
+    const card=document.createElement('div');
+    card.className='vcard';
+    card.id='vc'+w.n;
+    const exHTML=w.ex.map((e,i)=>`
+      <div class="ex-item">
+        <span class="ex-num">${i+1}</span>
+        <div class="ex-text">
+          <div class="ex-en">${e.en}</div>
+          <div class="ex-zh">${e.zh}</div>
+        </div>
+        ${mkBtn(e.en,'播放','ebtn-'+w.n+'-'+i)}
+      </div>`).join('');
+    const allEx=w.ex.map(e=>e.en).join('. ');
+    card.innerHTML=`
+      <div class="vcard-head" onclick="toggleCard(${w.n})">
+        <span class="vnum">${w.n}</span>
+        <span class="vword">${w.word}</span>
+        <span class="vpron">${w.pron}</span>
+        <span class="vtype">${w.type}</span>
+        <span class="vzh">${w.zh}</span>
+        <span class="vchev">▼</span>
+      </div>
+      <div class="vbody">
+        <div class="play-row">
+          ${mkBtn(w.word,'聽單字','wbtn-'+w.n)}
+          ${mkBtn(allEx,'聽全部例句','abtn-'+w.n)}
+        </div>
+        <div class="ex-list">${exHTML}</div>
+      </div>`;
+    sec.appendChild(card);
+  });
+}
+
+function toggleCard(n){
+  const c=document.getElementById('vc'+n);
+  const wasOpen=c.classList.contains('open');
+  document.querySelectorAll('.vcard').forEach(x=>x.classList.remove('open'));
+  if(!wasOpen) c.classList.add('open');
+}
+
+// ── STORY ──
+function buildStory(){
+  const sec=document.getElementById('sec-story');
+  // 合併所有單字的情境短文
+  const ens = WORDS.filter(w=>w.storyEN).map(w=>w.storyEN).join(' ');
+  const zhs = WORDS.filter(w=>w.storyZH).map(w=>w.storyZH).join(' ');
+  if(!ens){
+    sec.innerHTML='<div class="status">Google Sheet 的「情境短文」欄位尚無資料。</div>';
+    return;
+  }
+  // 高亮關鍵單字
+  let highlighted = ens;
+  WORDS.forEach(w=>{
+    const re=new RegExp('\\b'+w.word+'\\b','gi');
+    highlighted=highlighted.replace(re,`<span class="hl">${w.word}</span>`);
+  });
+  sec.innerHTML=`
+    <div class="card">
+      <div class="card-label">English</div>
+      <div class="story-en">${highlighted}</div>
+      <div class="play-row" style="margin-top:10px">
+        ${mkBtn(ens,'聽英文短文','story-play')}
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">中文對照</div>
+      <div class="story-zh">${zhs}</div>
+    </div>`;
+}
+
+// ── DIALOGUE ──
+function buildDlg(){
+  const sec=document.getElementById('sec-dlg');
+  // 嘗試從第一個有 dlgJSON 的單字讀取對話
+  const raw = WORDS.find(w=>w.dlgJSON);
+  if(!raw){
+    sec.innerHTML='<div class="status">Google Sheet 的「對話」欄位尚無資料。</div>';
+    return;
+  }
+  let dlg=[];
+  try{ dlg=JSON.parse(raw.dlgJSON); }
+  catch(e){
+    sec.innerHTML='<div class="error-box">對話 JSON 格式錯誤，請檢查 Google Sheet 第14欄。</div>';
+    return;
+  }
+  let html='';
+  dlg.forEach((d,i)=>{
+    const isSarah=d.speaker==='Sarah'||i%2===0;
+    // 高亮關鍵單字
+    let enHL=d.en;
+    WORDS.forEach(w=>{
+      const re=new RegExp('\\b'+w.word+'\\b','gi');
+      enHL=enHL.replace(re,`<span class="hl-w">${w.word}</span>`);
+    });
+    const cleanEn=d.en.replace(/<[^>]+>/g,'');
+    html+=`<div class="dlg-pair">
+      <div class="dlg-speaker">${isSarah?'🇬🇧':'🎧'} ${d.speaker}</div>
+      <div class="dlg-grid">
+        <div class="dlg-en">${enHL}
+          <div class="play-row" style="padding:6px 0 0">${mkBtn(cleanEn,'聽這句','dlg-'+i)}</div>
+        </div>
+        <div class="dlg-zh">${d.zh}</div>
+      </div>
+    </div>`;
+  });
+  const allSpk=dlg.map(d=>d.en.replace(/<[^>]+>/g,'')).join(' ');
+  html+=`<div class="play-row" style="margin-top:8px">${mkBtn(allSpk,'聽完整對話','dlg-all')}</div>`;
+  sec.innerHTML=html;
+}
+
+// ── QUIZ ──
+let QUIZ=[];
+function buildQuiz(){
+  const sec=document.getElementById('sec-quiz');
+  if(!WORDS.length){
+    sec.innerHTML='<div class="status">尚無單字資料可出題。</div>';
+    return;
+  }
+  // 自動出題：每個單字出一題「哪個是正確的中文意思」
+  QUIZ=WORDS.map(w=>{
+    const others=WORDS.filter(x=>x.word!==w.word).map(x=>x.zh);
+    const wrongs=others.sort(()=>Math.random()-.5).slice(0,3);
+    const opts=[w.zh,...wrongs].sort(()=>Math.random()-.5);
+    return {
+      q:`"${w.word}" 的中文意思是？`,
+      opts,
+      ans:opts.indexOf(w.zh)
+    };
+  });
+  qi=0;qs=0;
+  renderQuiz();
+}
+
+function renderQuiz(){
+  const sec=document.getElementById('sec-quiz');
+  sec.innerHTML=`
+    <div class="q-meta" id="qmeta"></div>
+    <div class="q-text" id="qtext"></div>
+    <div class="q-opts" id="qopts"></div>
+    <div class="q-fb"   id="qfb"></div>
+    <button class="nbtn" id="qnext" onclick="nextQ()" style="display:none">下一題 →</button>
+    <div id="qresult" style="display:none"></div>`;
+  loadQ();
+}
+
+function loadQ(){
+  if(qi>=QUIZ.length){showResult();return;}
+  const q=QUIZ[qi];
+  document.getElementById('qmeta').textContent=`第 ${qi+1} 題 ／ 共 ${QUIZ.length} 題`;
+  document.getElementById('qtext').textContent=q.q;
+  document.getElementById('qfb').textContent='';
+  document.getElementById('qnext').style.display='none';
+  const opts=document.getElementById('qopts');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='qopt';b.textContent=o;
+    b.onclick=()=>ansQ(i);
+    opts.appendChild(b);
+  });
+}
+
+function ansQ(i){
+  const q=QUIZ[qi];
+  document.querySelectorAll('.qopt').forEach(b=>b.onclick=null);
+  document.querySelectorAll('.qopt')[q.ans].classList.add('correct');
+  if(i!==q.ans){
+    document.querySelectorAll('.qopt')[i].classList.add('wrong');
+    document.getElementById('qfb').textContent='❌ 正確答案：'+q.opts[q.ans];
+  }else{
+    qs++;
+    document.getElementById('qfb').textContent='✅ 答對了！';
+  }
+  document.getElementById('qnext').style.display='inline-block';
+}
+
+function nextQ(){qi++;loadQ();}
+
+function showResult(){
+  document.getElementById('qtext').textContent='';
+  document.getElementById('qopts').innerHTML='';
+  document.getElementById('qmeta').textContent='';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('qfb').textContent='';
+  const pct=Math.round(qs/QUIZ.length*100);
+  document.getElementById('qresult').style.display='block';
+  document.getElementById('qresult').innerHTML=`
+    <div class="result-box">
+      <div class="result-score">${pct>=80?'🎉':'💪'} ${qs} / ${QUIZ.length}</div>
+      <div class="result-msg">${pct>=80?'太棒了！單字都記住了！':'繼續加油，熟能生巧！'}</div>
+      <button class="nbtn" onclick="buildQuiz()">重新挑戰 🔁</button>
+    </div>`;
+}
+
+// ── 啟動 ──
+loadData();
+</script>
+</body>
+</html>
