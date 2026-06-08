@@ -138,13 +138,14 @@ header p{font-size:12px;opacity:.75}
 // ════════════════════════════════════════════════
 //  ★ 設定區：請修改這兩個值
 // ════════════════════════════════════════════════
-const SHEET_ID   = '16a8Cyos9SXG6kl9CZO-CCkaayG2hMhDI';  // 你的 Google Sheet ID
-const SHEET_NAME = 'Daily';                                  // 工作表名稱（分頁標籤名）
+const SHEET_ID   = '';
+const SHEET_NAME = '工作表1';
 // ════════════════════════════════════════════════
-
 // Google Sheet 必須「發布到網路」→ 取得 CSV 連結
 // 格式：序號 | 單字 | 音標 | 詞性 | 中文 | 例句1EN | 例句1ZH | 例句2EN | 例句2ZH | 例句3EN | 例句3ZH | 情境短文EN | 情境短文ZH | 對話資料(JSON)
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+// ════════════════════════════════════════════════
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOUib-MyaEXj99qT2MZ76L6PvVfvU5Cb1DND5IPfAEiGCU2jezLar4Y1XzZrSOuwjibhZhkfXjl8S9/pub?gid=0&single=true&output=csv';
+
 
 let WORDS = [];
 let currentAudio = null;
