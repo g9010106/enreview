@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 EnglishPod V3000 單字練習</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Lato:wght@400;700;900&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Lato', 'Noto Sans TC', sans-serif;
+    background: #0f1117;
+    color: #e0e4f0;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a2340 0%, #0d1520 100%);
+    padding: 30px 20px 24px;
+    text-align: center;
+    border-bottom: 2px solid #1e2d4a;
+  }
+
+  header h1 {
+    font-size: 1.6em;
+    color: #7eb8f7;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  header p {
+    color: #5a7090;
+    font-size: 0.9em;
+  }
+
+  .search-bar {
+    max-width: 500px;
+    margin: 20px auto 0;
+    position: relative;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #2d3f5a;
+    background: #151b2a;
+    color: #e0e4f0;
+    font-size: 0.95em;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .search-bar input:focus {
+    border-color: #7eb8f7;
+  }
+
+  .search-bar input::placeholder { color: #3a5070; }
+
+  .main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+  .level-section { margin-bottom: 32px; }
+
+  .level-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: #f0a500;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1e2d4a;
+  }
+
+  .units-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+
+  .unit-card {
+    background: #151b2a;
+    border: 1px solid #1e2d4a;
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: #c8d4e8;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .unit-card:hover {
+    background: #1a2540;
+    border-color: #7eb8f7;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(126,184,247,0.12);
+  }
+
+  .unit-card.done {
+    border-left: 3px solid #2a8e4c;
+  }
+
+  .unit-card.current {
+    border-left: 3px solid #f0a500;
+    background: #1a2030;
+  }
+
+  .unit-name {
+    font-size: 0.88em;
+    font-weight: 700;
+    color: #7eb8f7;
+  }
+
+  .unit-words {
+    font-size: 0.78em;
+    color: #5a7090;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .unit-badge {
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 2px;
+    width: fit-content;
+  }
+
+  .badge-done { background: #1a4a2a; color: #5dde8c; }
+  .badge-current { background: #4a3a00; color: #f0c050; }
+  .badge-locked { background: #1a1f2e; color: #3a5070; }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+    background: #151b2a;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 1.5em; font-weight: 900; color: #7eb8f7; }
+  .stat-label { font-size: 0.75em; color: #5a7090; }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📚 EnglishPod V3000 單字練習</h1>
+  <p>點選任一單元開始複習</p>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 搜尋單元或單字..." oninput="filterUnits()">
+  </div>
+</header>
+
+<div class="main">
+
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num" id="totalDone">1</div>
+      <div class="stat-label">已完成單元</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500</div>
+      <div class="stat-label">總單元數</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="totalWords">5</div>
+      <div class="stat-label">已學單字數</div>
+    </div>
+  </div>
+
+  <!-- A2 級別 -->
+  <div class="level-section" id="section-A2">
+    <div class="level-title">🟡 A2 Level</div>
+    <div class="units-grid" id="grid-A2">
+
+      <!-- Unit 1 -->
+      <a href="u1-1.html" class="unit-card current" data-keywords="A2 Unit 1-1 abroad airline accommodation opportunity adventure">
+        <span class="unit-name">A2 U1-1</span>
+        <span class="unit-words">abroad · airline · accommodation</span>
+        <span class="unit-badge badge-current">📖 進行中</span>
+      </a>
+
+      <!-- Unit 1-2 以後（鎖定） -->
+      <div class="unit-card" data-keywords="A2 Unit 1-2">
+        <span class="unit-name">A2 U1-2</span>
+        <span class="unit-words">尚未開始</span>
+        <span class="unit-badge badge-locked">🔒 未解鎖</span>
+      </div>
+
+      <div class="unit-card" data-keywords="A2 Unit 1-3">
+        <span class="unit-name">A2 U1-3</span>
+        <span class="unit-words">尚未開始</span>
+        <span class="unit-badge badge-locked">🔒 未解鎖</span>
+      </div>
+
+      <div class="unit-card" data-keywords="A2 Unit 1-4">
+        <span class="unit-name">A2 U1-4</span>
+        <span class="unit-words">尚未開始</span>
+        <span class="unit-badge badge-locked">🔒 未解鎖</span>
+      </div>
+
+      <div class="unit-card" data-keywords="A2 Unit 1-5">
+        <span class="unit-name">A2 U1-5</span>
+        <span class="unit-words">尚未開始</span>
+        <span class="unit-badge badge-locked">🔒 未解鎖</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function filterUnits() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.unit-card').forEach(card => {
+    const kw = (card.dataset.keywords || '').toLowerCase();
+    card.classList.toggle('hidden', q && !kw.includes(q));
+  });
+}
+</script>
+
+</body>
+</html>
