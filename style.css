@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U01 G01 · Overseas Business &amp; Travel | Practice English After 50</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────── -->
+<header class="site-header">
+  <div class="brand-top">✦ Practice English ✦</div>
+  <div class="brand-name">Practice English with Me · After 50 &nbsp;│&nbsp; Oxford 3000™ A2</div>
+  <div class="brand-sub">Real Life Situations │ Simple &amp; Useful English</div>
+</header>
+
+<!-- ── MAIN ───────────────────────────────────── -->
+<main class="unit-wrap">
+
+  <a class="back-nav" href="index.html">
+    ← 返回目錄
+  </a>
+
+  <!-- Unit title bar -->
+  <div class="unit-title-bar">
+    <div>
+      <span class="unit-label">Unit 01</span>
+      <span class="unit-title-en">海外商務與旅行</span>
+      <span class="unit-title-zh">Overseas Business &amp; Travel</span>
+    </div>
+    <span class="group-badge">✦ Group 1 ✦ 5 Words</span>
+  </div>
+
+  <!-- ── WORD CARDS ──────────────────────────── -->
+  <div class="word-cards">
+
+    <!-- W01: abroad (odd = white) -->
+    <div class="word-card odd">
+      <div class="word-num">1</div>
+      <div class="word-body">
+        <div class="word-top-row">
+          <span class="word-en">abroad</span>
+          <span class="word-pron">/əˈbrɔːd/</span>
+          <span class="word-pos">adv.</span>
+          <span class="word-zh">在海外；出國</span>
+          <button class="audio-btn" onclick="playAudio('W01_1')" title="唸單字">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-def-row">
+          <span>📖 &nbsp;in or to a foreign country</span>
+          <button class="audio-btn" onclick="playAudio('W01_2')" title="唸定義">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-ex-row">
+          <div class="word-ex-en">
+            <span>💬 &nbsp;I've always wanted to work <strong>abroad</strong> and experience a new culture.</span>
+            <button class="audio-btn" onclick="playAudio('W01_3')" title="唸例句">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="word-ex-zh">我一直很想出國工作，體驗不同的文化。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W02: airline (even = FAF5EE) -->
+    <div class="word-card even">
+      <div class="word-num">2</div>
+      <div class="word-body">
+        <div class="word-top-row">
+          <span class="word-en">airline</span>
+          <span class="word-pron">/ˈeərlaɪn/</span>
+          <span class="word-pos">n.</span>
+          <span class="word-zh">航空公司</span>
+          <button class="audio-btn" onclick="playAudio('W02_1')" title="唸單字">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-def-row">
+          <span>📖 &nbsp;a company that operates passenger flights</span>
+          <button class="audio-btn" onclick="playAudio('W02_2')" title="唸定義">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-ex-row">
+          <div class="word-ex-en">
+            <span>💬 &nbsp;Which <strong>airline</strong> has the cheapest flights to Tokyo right now?</span>
+            <button class="audio-btn" onclick="playAudio('W02_3')" title="唸例句">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="word-ex-zh">現在飛東京哪家航空公司最便宜？</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W03: accommodation (odd = white) -->
+    <div class="word-card odd">
+      <div class="word-num">3</div>
+      <div class="word-body">
+        <div class="word-top-row">
+          <span class="word-en">accommodation</span>
+          <span class="word-pron">/əˌkɒməˈdeɪʃən/</span>
+          <span class="word-pos">n.</span>
+          <span class="word-zh">住宿；住所</span>
+          <button class="audio-btn" onclick="playAudio('W03_1')" title="唸單字">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-def-row">
+          <span>📖 &nbsp;a place to stay, such as a hotel or guesthouse</span>
+          <button class="audio-btn" onclick="playAudio('W03_2')" title="唸定義">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-ex-row">
+          <div class="word-ex-en">
+            <span>💬 &nbsp;We found great <strong>accommodation</strong> just five minutes from the beach.</span>
+            <button class="audio-btn" onclick="playAudio('W03_3')" title="唸例句">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="word-ex-zh">我們找到了離海灘只有五分鐘路程的超讚住宿。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W04: opportunity (even) -->
+    <div class="word-card even">
+      <div class="word-num">4</div>
+      <div class="word-body">
+        <div class="word-top-row">
+          <span class="word-en">opportunity</span>
+          <span class="word-pron">/ˌɒpəˈtjuːnɪti/</span>
+          <span class="word-pos">n.</span>
+          <span class="word-zh">機會；良機</span>
+          <button class="audio-btn" onclick="playAudio('W04_1')" title="唸單字">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-def-row">
+          <span>📖 &nbsp;a chance to do or achieve something good</span>
+          <button class="audio-btn" onclick="playAudio('W04_2')" title="唸定義">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-ex-row">
+          <div class="word-ex-en">
+            <span>💬 &nbsp;This trip is a real <strong>opportunity</strong> to improve my English.</span>
+            <button class="audio-btn" onclick="playAudio('W04_3')" title="唸例句">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="word-ex-zh">這趟旅行是個提升英文的好機會。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W05: adventure (odd = white) -->
+    <div class="word-card odd">
+      <div class="word-num">5</div>
+      <div class="word-body">
+        <div class="word-top-row">
+          <span class="word-en">adventure</span>
+          <span class="word-pron">/ədˈventʃər/</span>
+          <span class="word-pos">n.</span>
+          <span class="word-zh">冒險；探險</span>
+          <button class="audio-btn" onclick="playAudio('W05_1')" title="唸單字">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-def-row">
+          <span>📖 &nbsp;an exciting experience, often with some risk</span>
+          <button class="audio-btn" onclick="playAudio('W05_2')" title="唸定義">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+        <div class="word-ex-row">
+          <div class="word-ex-en">
+            <span>💬 &nbsp;Backpacking through Southeast Asia was the best <strong>adventure</strong> of my life.</span>
+            <button class="audio-btn" onclick="playAudio('W05_3')" title="唸例句">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+          <div class="word-ex-zh">背包遊東南亞是我這輩子最棒的冒險。</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /word-cards -->
+
+  <!-- ── DIALOGUE ────────────────────────────── -->
+  <div class="dialogue-section">
+    <div class="dialogue-header">
+      <div>
+        <span class="dialogue-header-label">💬 Dialogue &nbsp;情境對話</span>
+      </div>
+      <button class="audio-btn" style="color:#5C3D1E;" onclick="playAudio('D_full')" title="播放完整對話">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span style="font-size:11px;font-weight:700;margin-left:4px;color:#5C3D1E;">完整播放</span>
+      </button>
+    </div>
+
+    <div class="dialogue-lines">
+
+      <div class="dialogue-line">
+        <div class="dialogue-text">
+          <div class="dialogue-en">Hey, I'm finally going <strong>abroad</strong> next month!</div>
+          <div class="dialogue-zh">嘿，我下個月終於要出國了！</div>
+        </div>
+        <button class="audio-btn" onclick="playAudio('D01')" title="播放這句">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+      </div>
+
+      <div class="dialogue-line">
+        <div class="dialogue-text">
+          <div class="dialogue-en">I booked tickets through a budget <strong>airline</strong> and found affordable <strong>accommodation</strong> near the city centre.</div>
+          <div class="dialogue-zh">我訂了廉價航空的機票，也找到了市中心附近平價的住宿。</div>
+        </div>
+        <button class="audio-btn" onclick="playAudio('D02')" title="播放這句">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+      </div>
+
+      <div class="dialogue-line">
+        <div class="dialogue-text">
+          <div class="dialogue-en">It's a huge <strong>opportunity</strong> to see the world and try something new.</div>
+          <div class="dialogue-zh">這是個大好機會可以看看世界、嘗試新事物。</div>
+        </div>
+        <button class="audio-btn" onclick="playAudio('D03')" title="播放這句">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+      </div>
+
+      <div class="dialogue-line">
+        <div class="dialogue-text">
+          <div class="dialogue-en">Honestly, the whole trip feels like one big <strong>adventure</strong>!</div>
+          <div class="dialogue-zh">說真的，整趟旅程感覺就是一場大冒險！</div>
+        </div>
+        <button class="audio-btn" onclick="playAudio('D04')" title="播放這句">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+      </div>
+
+    </div><!-- /dialogue-lines -->
+
+    <div class="tip-bar">
+      ✨ &nbsp;<strong>Tip:</strong> &nbsp;Read each sentence aloud 3 times — easy and natural! 🎯
+    </div>
+
+  </div><!-- /dialogue-section -->
+
+</main>
+
+<footer class="site-footer">
+  Practice English with Me · After 50 &nbsp;│&nbsp; Oxford 3000™ A2
+</footer>
+
+<!-- ── AUDIO ENGINE ────────────────────────────── -->
+<script>
+  // Audio file map — paths relative to this HTML file
+  const AUDIO_MAP = {
+    'W01_1': 'assets/audio/U01_G01/W01_1.mp3',
+    'W01_2': 'assets/audio/U01_G01/W01_2.mp3',
+    'W01_3': 'assets/audio/U01_G01/W01_3.mp3',
+    'W02_1': 'assets/audio/U01_G01/W02_1.mp3',
+    'W02_2': 'assets/audio/U01_G01/W02_2.mp3',
+    'W02_3': 'assets/audio/U01_G01/W02_3.mp3',
+    'W03_1': 'assets/audio/U01_G01/W03_1.mp3',
+    'W03_2': 'assets/audio/U01_G01/W03_2.mp3',
+    'W03_3': 'assets/audio/U01_G01/W03_3.mp3',
+    'W04_1': 'assets/audio/U01_G01/W04_1.mp3',
+    'W04_2': 'assets/audio/U01_G01/W04_2.mp3',
+    'W04_3': 'assets/audio/U01_G01/W04_3.mp3',
+    'W05_1': 'assets/audio/U01_G01/W05_1.mp3',
+    'W05_2': 'assets/audio/U01_G01/W05_2.mp3',
+    'W05_3': 'assets/audio/U01_G01/W05_3.mp3',
+    'D_full': 'assets/audio/U01_G01/D_full.mp3',
+    'D01':    'assets/audio/U01_G01/D01.mp3',
+    'D02':    'assets/audio/U01_G01/D02.mp3',
+    'D03':    'assets/audio/U01_G01/D03.mp3',
+    'D04':    'assets/audio/U01_G01/D04.mp3',
+  };
+
+  let currentAudio = null;
+  let currentBtn   = null;
+
+  function playAudio(key) {
+    const src = AUDIO_MAP[key];
+    if (!src) return;
+
+    // Stop any currently playing audio
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      if (currentBtn) currentBtn.classList.remove('playing');
+    }
+
+    // Find the button that was clicked (closest .audio-btn with matching onclick)
+    const btn = event.currentTarget;
+
+    const audio = new Audio(src);
+    currentAudio = audio;
+    currentBtn   = btn;
+
+    btn.classList.add('playing');
+    audio.play().catch(() => {});
+
+    audio.addEventListener('ended', () => {
+      btn.classList.remove('playing');
+      currentAudio = null;
+      currentBtn   = null;
+    });
+  }
+</script>
+
+</body>
+</html>
