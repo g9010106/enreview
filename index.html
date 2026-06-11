@@ -485,5 +485,12 @@
   <p style="margin-top:4px;font-size:10px;">內容為個人教學設計，單字參照 Oxford 3000™。All rights reserved.</p>
 </footer>
 
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/enreview/sw.js")
+    .then(() => console.log("SW registered"))
+    .catch(e => console.log("SW error", e));
+}
+</script>
 </body>
 </html>
