@@ -5,3 +5,40 @@
 .pause-btn{display:none;background:none;border:none;cursor:pointer;padding:3px;border-radius:50%;color:var(--c-text-dark);font-size:13px;font-weight:700;transition:background 0.15s;}
 .pause-btn.visible{display:inline-flex;align-items:center;gap:4px;}
 .pause-btn:hover{background:var(--c-tip-bg);}
+
+/* ── 手機大螢幕/小平板 481~768px ── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .word-en { font-size: 20px; }
+  .word-zh { font-size: 15px; }
+  .word-ex-row { font-size: 15px; }
+  .dialogue-en { font-size: 15px; }
+  .word-def-row { font-size: 14px; }
+  .unit-wrap { padding: 16px 20px 40px; }
+  .toc-groups { padding-left: 16px; }
+}
+
+/* ── App 質感優化 ── */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* 允許定義、例句可以選取複製 */
+.word-def-row, .word-ex-en, .word-ex-zh,
+.dialogue-en, .dialogue-zh {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* ── 固定音訊控制列在頂部 ── */
+.audio-controls-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(92,61,30,0.12);
+}
