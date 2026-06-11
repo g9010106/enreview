@@ -262,6 +262,16 @@
 </footer>
 
 <!-- ── AUDIO ENGINE ────────────────────────────── -->
+<div class="audio-controls-bar">
+  <span style="font-size:12px;color:var(--c-text-mid);font-weight:600;">🔊 速度：</span>
+  <select class="speed-select" id="speedSelect">
+    <option value="1">1x 正常</option>
+    <option value="0.75">0.75x 慢速</option>
+    <option value="0.5">0.5x 很慢</option>
+  </select>
+  <button class="pause-btn" id="pauseBtn">⏸ 暫停</button>
+</div>
+
 <script>
   // Audio file map — paths relative to this HTML file
   const AUDIO_MAP = {
@@ -309,14 +319,36 @@
     currentBtn   = btn;
 
     btn.classList.add('playing');
+    const speed = parseFloat(document.getElementById('speedSelect').value);
+    audio.playbackRate = speed;
     audio.play().catch(() => {});
 
     audio.addEventListener('ended', () => {
       btn.classList.remove('playing');
+      document.getElementById('pauseBtn').classList.remove('visible');
       currentAudio = null;
       currentBtn   = null;
     });
+
+    const pauseBtn = document.getElementById('pauseBtn');
+    pauseBtn.classList.add('visible');
+    pauseBtn.onclick = function() {
+      if (!currentAudio) return;
+      if (currentAudio.paused) {
+        currentAudio.play();
+        pauseBtn.textContent = '⏸ 暫停';
+        if (currentBtn) currentBtn.classList.add('playing');
+      } else {
+        currentAudio.pause();
+        pauseBtn.textContent = '▶ 繼續';
+        if (currentBtn) currentBtn.classList.remove('playing');
+      }
+    };
   }
+
+  document.getElementById('speedSelect').addEventListener('change', function() {
+    if (currentAudio) currentAudio.playbackRate = parseFloat(this.value);
+  });
 </script>
 
 </body>
