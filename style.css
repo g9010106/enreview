@@ -1,322 +1,469 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>U01 G01 · Overseas Business &amp; Travel | Practice English After 50</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
+/* =============================================
+   Practice English with Me · After 50
+   Oxford 3000™ A2 — Shared Stylesheet
+   ============================================= */
 
-<!-- ── HEADER ─────────────────────────────────── -->
-<header class="site-header">
-  <div class="brand-top">✦ Practice English ✦</div>
-  <div class="brand-name">Practice English with Me · After 50 &nbsp;│&nbsp; Oxford 3000™ A2</div>
-  <div class="brand-sub">Real Life Situations │ Simple &amp; Useful English</div>
-</header>
+/* --- Color Palette --- */
+:root {
+  --c-header-bg:    #C8A882;   /* 深米色 — 表頭、號碼格 */
+  --c-unit-bg:      #EFE0C8;   /* 中米色 — Unit bar、定義列 */
+  --c-card-odd:     #FFFFFF;   /* 白 — 奇數字卡 abroad, accommodation */
+  --c-card-even:    #FAF5EE;   /* 淺米白 — 偶數字卡 airline, opportunity */
+  --c-tip-bg:       #EAD8C0;   /* 暖米色 — Tip 列 */
+  --c-text-dark:    #5C3D1E;   /* 深棕 — 單字、例句、對話 */
+  --c-text-mid:     #7A5230;   /* 中棕 — 音標、定義、中文 */
+  --c-pos:          #6B8F71;   /* 鼠尾草綠 — 詞性、Group */
+  --c-brand:        #00B050;   /* 品牌綠 — 品牌名 */
+  --c-white:        #FFFFFF;
 
-<!-- ── MAIN ───────────────────────────────────── -->
-<main class="unit-wrap">
+  --font-main: 'Georgia', 'Times New Roman', serif;
+  --font-ui:   'Arial', 'Helvetica Neue', sans-serif;
+  --shadow:    0 2px 8px rgba(92,61,30,0.10);
+  --radius:    6px;
+}
 
-  <a class="back-nav" href="index.html">
-    ← 返回目錄
-  </a>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Unit title bar -->
-  <div class="unit-title-bar">
-    <div>
-      <span class="unit-label">Unit 01</span>
-      <span class="unit-title-en">海外商務與旅行</span>
-      <span class="unit-title-zh">Overseas Business &amp; Travel</span>
-    </div>
-    <span class="group-badge">✦ Group 1 ✦ 5 Words</span>
-  </div>
+body {
+  font-family: var(--font-ui);
+  background: var(--c-unit-bg);
+  color: var(--c-text-dark);
+  min-height: 100vh;
+}
 
-  <!-- ── WORD CARDS ──────────────────────────── -->
-  <div class="word-cards">
+a { color: inherit; text-decoration: none; }
 
-    <!-- W01: abroad (odd = white) -->
-    <div class="word-card odd">
-      <div class="word-num">1</div>
-      <div class="word-body">
-        <div class="word-top-row">
-          <span class="word-en">abroad</span>
-          <span class="word-pron">/əˈbrɔːd/</span>
-          <span class="word-pos">adv.</span>
-          <span class="word-zh">在海外；出國</span>
-          <button class="audio-btn" onclick="playAudio('W01_1')" title="唸單字">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-def-row">
-          <span>📖 &nbsp;in or to a foreign country</span>
-          <button class="audio-btn" onclick="playAudio('W01_2')" title="唸定義">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-ex-row">
-          <div class="word-ex-en">
-            <span>💬 &nbsp;I've always wanted to work <strong>abroad</strong> and experience a new culture.</span>
-            <button class="audio-btn" onclick="playAudio('W01_3')" title="唸例句">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-          <div class="word-ex-zh">我一直很想出國工作，體驗不同的文化。</div>
-        </div>
-      </div>
-    </div>
+/* =============================================
+   SHARED HEADER BANNER
+   ============================================= */
+.site-header {
+  background: var(--c-header-bg);
+  padding: 10px 20px 6px;
+  text-align: center;
+}
+.site-header .brand-top {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--c-text-dark);
+  text-transform: uppercase;
+}
+.site-header .brand-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-brand);
+  letter-spacing: 0.5px;
+}
+.site-header .brand-sub {
+  font-size: 10px;
+  color: var(--c-text-mid);
+  font-style: italic;
+  margin-top: 1px;
+}
 
-    <!-- W02: airline (even = FAF5EE) -->
-    <div class="word-card even">
-      <div class="word-num">2</div>
-      <div class="word-body">
-        <div class="word-top-row">
-          <span class="word-en">airline</span>
-          <span class="word-pron">/ˈeərlaɪn/</span>
-          <span class="word-pos">n.</span>
-          <span class="word-zh">航空公司</span>
-          <button class="audio-btn" onclick="playAudio('W02_1')" title="唸單字">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-def-row">
-          <span>📖 &nbsp;a company that operates passenger flights</span>
-          <button class="audio-btn" onclick="playAudio('W02_2')" title="唸定義">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-ex-row">
-          <div class="word-ex-en">
-            <span>💬 &nbsp;Which <strong>airline</strong> has the cheapest flights to Tokyo right now?</span>
-            <button class="audio-btn" onclick="playAudio('W02_3')" title="唸例句">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-          <div class="word-ex-zh">現在飛東京哪家航空公司最便宜？</div>
-        </div>
-      </div>
-    </div>
+/* =============================================
+   INDEX PAGE — TABLE OF CONTENTS
+   ============================================= */
+.index-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
 
-    <!-- W03: accommodation (odd = white) -->
-    <div class="word-card odd">
-      <div class="word-num">3</div>
-      <div class="word-body">
-        <div class="word-top-row">
-          <span class="word-en">accommodation</span>
-          <span class="word-pron">/əˌkɒməˈdeɪʃən/</span>
-          <span class="word-pos">n.</span>
-          <span class="word-zh">住宿；住所</span>
-          <button class="audio-btn" onclick="playAudio('W03_1')" title="唸單字">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-def-row">
-          <span>📖 &nbsp;a place to stay, such as a hotel or guesthouse</span>
-          <button class="audio-btn" onclick="playAudio('W03_2')" title="唸定義">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-ex-row">
-          <div class="word-ex-en">
-            <span>💬 &nbsp;We found great <strong>accommodation</strong> just five minutes from the beach.</span>
-            <button class="audio-btn" onclick="playAudio('W03_3')" title="唸例句">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-          <div class="word-ex-zh">我們找到了離海灘只有五分鐘路程的超讚住宿。</div>
-        </div>
-      </div>
-    </div>
+.index-title-bar {
+  background: var(--c-text-dark);
+  color: var(--c-white);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.index-title-bar .badge {
+  background: var(--c-brand);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.index-title-bar h1 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
-    <!-- W04: opportunity (even) -->
-    <div class="word-card even">
-      <div class="word-num">4</div>
-      <div class="word-body">
-        <div class="word-top-row">
-          <span class="word-en">opportunity</span>
-          <span class="word-pron">/ˌɒpəˈtjuːnɪti/</span>
-          <span class="word-pos">n.</span>
-          <span class="word-zh">機會；良機</span>
-          <button class="audio-btn" onclick="playAudio('W04_1')" title="唸單字">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-def-row">
-          <span>📖 &nbsp;a chance to do or achieve something good</span>
-          <button class="audio-btn" onclick="playAudio('W04_2')" title="唸定義">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-ex-row">
-          <div class="word-ex-en">
-            <span>💬 &nbsp;This trip is a real <strong>opportunity</strong> to improve my English.</span>
-            <button class="audio-btn" onclick="playAudio('W04_3')" title="唸例句">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-          <div class="word-ex-zh">這趟旅行是個提升英文的好機會。</div>
-        </div>
-      </div>
-    </div>
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: var(--c-white);
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
 
-    <!-- W05: adventure (odd = white) -->
-    <div class="word-card odd">
-      <div class="word-num">5</div>
-      <div class="word-body">
-        <div class="word-top-row">
-          <span class="word-en">adventure</span>
-          <span class="word-pron">/ədˈventʃər/</span>
-          <span class="word-pos">n.</span>
-          <span class="word-zh">冒險；探險</span>
-          <button class="audio-btn" onclick="playAudio('W05_1')" title="唸單字">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-def-row">
-          <span>📖 &nbsp;an exciting experience, often with some risk</span>
-          <button class="audio-btn" onclick="playAudio('W05_2')" title="唸定義">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-        </div>
-        <div class="word-ex-row">
-          <div class="word-ex-en">
-            <span>💬 &nbsp;Backpacking through Southeast Asia was the best <strong>adventure</strong> of my life.</span>
-            <button class="audio-btn" onclick="playAudio('W05_3')" title="唸例句">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-          </div>
-          <div class="word-ex-zh">背包遊東南亞是我這輩子最棒的冒險。</div>
-        </div>
-      </div>
-    </div>
+.toc-unit {
+  border-bottom: 1px solid var(--c-unit-bg);
+}
+.toc-unit:last-child { border-bottom: none; }
 
-  </div><!-- /word-cards -->
+.toc-unit-header {
+  background: var(--c-unit-bg);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toc-unit-num {
+  background: var(--c-header-bg);
+  color: var(--c-text-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  min-width: 40px;
+  text-align: center;
+}
+.toc-unit-title-en {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+  flex: 1;
+}
+.toc-unit-title-zh {
+  font-size: 12px;
+  color: var(--c-text-mid);
+}
 
-  <!-- ── DIALOGUE ────────────────────────────── -->
-  <div class="dialogue-section">
-    <div class="dialogue-header">
-      <div>
-        <span class="dialogue-header-label">💬 Dialogue &nbsp;情境對話</span>
-      </div>
-      <button class="audio-btn" style="color:#5C3D1E;" onclick="playAudio('D_full')" title="播放完整對話">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        <span style="font-size:11px;font-weight:700;margin-left:4px;color:#5C3D1E;">完整播放</span>
-      </button>
-    </div>
+.toc-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px 12px 66px;
+  background: var(--c-white);
+}
 
-    <div class="dialogue-lines">
+.toc-group-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--c-card-even);
+  border: 1.5px solid var(--c-unit-bg);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--c-text-dark);
+  font-weight: 600;
+  transition: all 0.18s;
+  cursor: pointer;
+}
+.toc-group-link:hover {
+  background: var(--c-header-bg);
+  border-color: var(--c-header-bg);
+  color: var(--c-text-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(92,61,30,0.15);
+}
+.toc-group-link.locked {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+.toc-group-link .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--c-pos);
+}
+.toc-group-link.locked .dot {
+  background: #bbb;
+}
 
-      <div class="dialogue-line">
-        <div class="dialogue-text">
-          <div class="dialogue-en">Hey, I'm finally going <strong>abroad</strong> next month!</div>
-          <div class="dialogue-zh">嘿，我下個月終於要出國了！</div>
-        </div>
-        <button class="audio-btn" onclick="playAudio('D01')" title="播放這句">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </button>
-      </div>
+.index-footer-note {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 11px;
+  color: var(--c-text-mid);
+  font-style: italic;
+}
 
-      <div class="dialogue-line">
-        <div class="dialogue-text">
-          <div class="dialogue-en">I booked tickets through a budget <strong>airline</strong> and found affordable <strong>accommodation</strong> near the city centre.</div>
-          <div class="dialogue-zh">我訂了廉價航空的機票，也找到了市中心附近平價的住宿。</div>
-        </div>
-        <button class="audio-btn" onclick="playAudio('D02')" title="播放這句">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </button>
-      </div>
+/* =============================================
+   UNIT CONTENT PAGE
+   ============================================= */
+.unit-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 14px 40px;
+}
 
-      <div class="dialogue-line">
-        <div class="dialogue-text">
-          <div class="dialogue-en">It's a huge <strong>opportunity</strong> to see the world and try something new.</div>
-          <div class="dialogue-zh">這是個大好機會可以看看世界、嘗試新事物。</div>
-        </div>
-        <button class="audio-btn" onclick="playAudio('D03')" title="播放這句">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </button>
-      </div>
+/* Back nav */
+.back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--c-text-mid);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--c-white);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.back-nav:hover { background: var(--c-tip-bg); }
 
-      <div class="dialogue-line">
-        <div class="dialogue-text">
-          <div class="dialogue-en">Honestly, the whole trip feels like one big <strong>adventure</strong>!</div>
-          <div class="dialogue-zh">說真的，整趟旅程感覺就是一場大冒險！</div>
-        </div>
-        <button class="audio-btn" onclick="playAudio('D04')" title="播放這句">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </button>
-      </div>
+/* Unit title bar */
+.unit-title-bar {
+  background: var(--c-unit-bg);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--c-header-bg);
+}
+.unit-title-bar .unit-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+}
+.unit-title-bar .unit-title-en {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+}
+.unit-title-bar .unit-title-zh {
+  font-size: 12px;
+  color: var(--c-text-mid);
+  margin-left: 8px;
+}
+.unit-title-bar .group-badge {
+  font-size: 11px;
+  color: var(--c-pos);
+  font-weight: 700;
+  background: var(--c-white);
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--c-pos);
+  white-space: nowrap;
+}
 
-    </div><!-- /dialogue-lines -->
+/* Word Cards */
+.word-cards {
+  background: var(--c-white);
+  box-shadow: var(--shadow);
+}
 
-    <div class="tip-bar">
-      ✨ &nbsp;<strong>Tip:</strong> &nbsp;Read each sentence aloud 3 times — easy and natural! 🎯
-    </div>
+.word-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  border-bottom: 1px solid var(--c-unit-bg);
+}
+.word-card:last-child { border-bottom: none; }
+.word-card.even { background: var(--c-card-even); }
+.word-card.odd  { background: var(--c-card-odd); }
 
-  </div><!-- /dialogue-section -->
+.word-num {
+  background: var(--c-header-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+  padding: 16px 0;
+}
 
-</main>
+.word-body {
+  padding: 12px 14px 10px;
+}
 
-<footer class="site-footer">
-  Practice English with Me · After 50 &nbsp;│&nbsp; Oxford 3000™ A2
-</footer>
+.word-top-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.word-en {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+  font-family: var(--font-main);
+  letter-spacing: 0.3px;
+}
+.word-pron {
+  font-size: 12px;
+  color: var(--c-text-mid);
+  font-style: italic;
+}
+.word-pos {
+  font-size: 11px;
+  color: var(--c-pos);
+  font-weight: 700;
+}
+.word-zh {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+  margin-left: auto;
+}
 
-<!-- ── AUDIO ENGINE ────────────────────────────── -->
-<script>
-  // Audio file map — paths relative to this HTML file
-  const AUDIO_MAP = {
-    'W01_1': 'assets/audio/U01_G01/W01_1.mp3',
-    'W01_2': 'assets/audio/U01_G01/W01_2.mp3',
-    'W01_3': 'assets/audio/U01_G01/W01_3.mp3',
-    'W02_1': 'assets/audio/U01_G01/W02_1.mp3',
-    'W02_2': 'assets/audio/U01_G01/W02_2.mp3',
-    'W02_3': 'assets/audio/U01_G01/W02_3.mp3',
-    'W03_1': 'assets/audio/U01_G01/W03_1.mp3',
-    'W03_2': 'assets/audio/U01_G01/W03_2.mp3',
-    'W03_3': 'assets/audio/U01_G01/W03_3.mp3',
-    'W04_1': 'assets/audio/U01_G01/W04_1.mp3',
-    'W04_2': 'assets/audio/U01_G01/W04_2.mp3',
-    'W04_3': 'assets/audio/U01_G01/W04_3.mp3',
-    'W05_1': 'assets/audio/U01_G01/W05_1.mp3',
-    'W05_2': 'assets/audio/U01_G01/W05_2.mp3',
-    'W05_3': 'assets/audio/U01_G01/W05_3.mp3',
-    'D_full': 'assets/audio/U01_G01/D_full.mp3',
-    'D01':    'assets/audio/U01_G01/D01.mp3',
-    'D02':    'assets/audio/U01_G01/D02.mp3',
-    'D03':    'assets/audio/U01_G01/D03.mp3',
-    'D04':    'assets/audio/U01_G01/D04.mp3',
-  };
+.word-def-row {
+  background: var(--c-unit-bg);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: var(--c-text-mid);
+  font-style: italic;
+  margin: 6px 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 
-  let currentAudio = null;
-  let currentBtn   = null;
+.word-ex-row {
+  font-size: 13px;
+  color: var(--c-text-dark);
+  line-height: 1.55;
+}
+.word-ex-en {
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.word-ex-zh {
+  font-size: 11.5px;
+  color: var(--c-text-mid);
+}
 
-  function playAudio(key) {
-    const src = AUDIO_MAP[key];
-    if (!src) return;
+/* Audio buttons */
+.audio-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+  color: var(--c-header-bg);
+}
+.audio-btn:hover {
+  background: var(--c-tip-bg);
+  transform: scale(1.15);
+}
+.audio-btn.playing {
+  color: var(--c-brand);
+  animation: pulse 0.8s infinite alternate;
+}
+@keyframes pulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.2); }
+}
+.audio-btn svg {
+  width: 18px; height: 18px;
+}
 
-    // Stop any currently playing audio
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-      if (currentBtn) currentBtn.classList.remove('playing');
-    }
+/* Dialogue section */
+.dialogue-section {
+  margin-top: 0;
+  box-shadow: var(--shadow);
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+}
 
-    // Find the button that was clicked (closest .audio-btn with matching onclick)
-    const btn = event.currentTarget;
+.dialogue-header {
+  background: var(--c-header-bg);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dialogue-header-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text-dark);
+}
+.dialogue-header-sub {
+  font-size: 11px;
+  color: var(--c-text-mid);
+}
 
-    const audio = new Audio(src);
-    currentAudio = audio;
-    currentBtn   = btn;
+.dialogue-lines {
+  background: var(--c-white);
+}
 
-    btn.classList.add('playing');
-    audio.play().catch(() => {});
+.dialogue-line {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--c-unit-bg);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dialogue-line:last-child { border-bottom: none; }
+.dialogue-line:nth-child(odd) { background: var(--c-card-odd); }
+.dialogue-line:nth-child(even) { background: var(--c-card-even); }
 
-    audio.addEventListener('ended', () => {
-      btn.classList.remove('playing');
-      currentAudio = null;
-      currentBtn   = null;
-    });
-  }
-</script>
+.dialogue-text { flex: 1; }
+.dialogue-en {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-text-dark);
+  margin-bottom: 3px;
+  line-height: 1.5;
+}
+.dialogue-zh {
+  font-size: 11.5px;
+  color: var(--c-text-mid);
+  line-height: 1.5;
+}
 
-</body>
-</html>
+/* Tip bar */
+.tip-bar {
+  background: var(--c-tip-bg);
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--c-text-mid);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--c-header-bg);
+}
+.tip-bar strong { color: var(--c-text-dark); }
+
+/* Site footer */
+.site-footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 10.5px;
+  color: var(--c-text-mid);
+  font-style: italic;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 480px) {
+  .word-en { font-size: 17px; }
+  .word-zh { font-size: 12px; }
+  .toc-groups { padding-left: 16px; }
+  .unit-title-bar { flex-wrap: wrap; gap: 6px; }
+}
+
+.audio-controls-bar{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--c-unit-bg);border-bottom:2px solid var(--c-header-bg);border-radius:var(--radius) var(--radius) 0 0;}
+.speed-select{font-size:12px;color:var(--c-text-dark);border:1.5px solid var(--c-header-bg);border-radius:12px;padding:4px 10px;background:var(--c-white);cursor:pointer;font-family:var(--font-ui);}
+.pause-btn{display:none;background:var(--c-white);border:1.5px solid var(--c-header-bg);cursor:pointer;padding:4px 12px;border-radius:12px;color:var(--c-text-dark);font-size:12px;font-weight:700;transition:background 0.15s;}
+.pause-btn.visible{display:inline-flex;align-items:center;gap:4px;}
+.pause-btn:hover{background:var(--c-tip-bg);}
