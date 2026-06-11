@@ -1,0 +1,17 @@
+{
+  "name": "EN After 50",
+  "short_name": "EN After 50",
+  "description": "Practice English with Me · Oxford 3000™ A2",
+  "start_url": "/enreview/",
+  "display": "standalone",
+  "background_color": "#EFE0C8",
+  "theme_color": "#C8A882",
+  "icons": [
+    {
+      "src": "/enreview/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
